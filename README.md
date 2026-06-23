@@ -52,3 +52,6 @@ Improved implementation capable of collecting a larger and more complete dataset
 cd streamlit_app
 streamlit run home.py
 ```
+
+## 🚀 Live Demo
+[👉 Open the app](https://appappfinal-wagruzigshxwfv2ezccg2c.streamlit.app/)
