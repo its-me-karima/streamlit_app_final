@@ -5,17 +5,21 @@ from transformers import pipeline
 
 
 @st.cache_data
+@st.cache_data
 def load_data(json_path: str = "results.json") -> pd.DataFrame:
     """
     Load scraped ProductHunt data from results.json.
     Cached so the file is only read once per session.
     """
     try:
-        with open(json_path, "r", encoding="utf-8") as f:
+        import os
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        full_path = os.path.join(base_dir, json_path)
+
+        with open(full_path, "r", encoding="utf-8") as f:
             raw = json.load(f)
         df = pd.DataFrame(raw)
 
-        # Parse "42 reviews" → integer for sorting/charting
         if "Reviews" in df.columns:
             df["Review_Count"] = (
                 df["Reviews"]
